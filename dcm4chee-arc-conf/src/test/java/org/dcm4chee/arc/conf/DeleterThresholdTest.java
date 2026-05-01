@@ -40,12 +40,12 @@
 
 package org.dcm4chee.arc.conf;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Gunter Zeilinger <gunterze@gmail.com>

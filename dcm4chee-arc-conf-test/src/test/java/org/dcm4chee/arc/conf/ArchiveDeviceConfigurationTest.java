@@ -47,14 +47,14 @@ import org.dcm4che3.conf.api.hl7.HL7Configuration;
 import org.dcm4che3.net.ApplicationEntity;
 import org.dcm4che3.net.Device;
 import org.dcm4chee.arc.conf.ldap.LdapArchiveConfigurationFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.EnumSet;
 
 import static org.dcm4chee.arc.conf.Assert.assertDeviceEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author Gunter Zeilinger <gunterze@gmail.com>

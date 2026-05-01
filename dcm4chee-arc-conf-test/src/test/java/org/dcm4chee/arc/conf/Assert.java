@@ -45,7 +45,7 @@ import org.dcm4che3.net.Device;
 
 import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Gunter Zeilinger <gunterze@gmail.com>

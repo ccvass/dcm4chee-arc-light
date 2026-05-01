@@ -48,7 +48,7 @@ import org.dcm4che3.conf.json.ConfigurationDelegate;
 import org.dcm4che3.conf.json.JsonConfiguration;
 import org.dcm4che3.net.Device;
 import org.dcm4chee.arc.conf.json.JsonConfigurationProducer;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
