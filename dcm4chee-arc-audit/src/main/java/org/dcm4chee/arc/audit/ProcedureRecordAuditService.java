@@ -424,7 +424,7 @@ class ProcedureRecordAuditService extends AuditService {
         hl7Application.setUserID(appFacility.equals("*") ? defVal : appFacility);
         hl7Application.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         hl7Application.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String hl7AppFacilityHost = hl7App.getConnections().get(0).getHostname();
+        String hl7AppFacilityHost = AuditUtils.firstHostnameOf(hl7App.getConnections());
         hl7Application.setNetworkAccessPointID(hl7AppFacilityHost);
         hl7Application.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(hl7AppFacilityHost)
@@ -439,7 +439,7 @@ class ProcedureRecordAuditService extends AuditService {
         hl7Application.setUserID(hl7App.getApplicationName());
         hl7Application.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         hl7Application.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String hl7AppFacilityHost = hl7App.getConnections().get(0).getHostname();
+        String hl7AppFacilityHost = AuditUtils.firstHostnameOf(hl7App.getConnections());
         hl7Application.setNetworkAccessPointID(hl7AppFacilityHost);
         hl7Application.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(hl7AppFacilityHost)
@@ -457,7 +457,7 @@ class ProcedureRecordAuditService extends AuditService {
         archiveRequestor.setUserIDTypeCode(AuditMessages.UserIDTypeCode.DeviceName);
         archiveRequestor.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveRequestor.setAlternativeUserID(AuditLogger.processID());
-        String archiveRequestorHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveRequestorHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveRequestor.setNetworkAccessPointID(archiveRequestorHost);
         archiveRequestor.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveRequestorHost)
@@ -501,7 +501,7 @@ class ProcedureRecordAuditService extends AuditService {
         archiveURI.setUserIDTypeCode(AuditMessages.UserIDTypeCode.URI);
         archiveURI.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveURI.setAlternativeUserID(AuditLogger.processID());
-        String archiveURIHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveURIHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveURI.setNetworkAccessPointID(archiveURIHost);
         archiveURI.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveURIHost)
@@ -535,7 +535,7 @@ class ProcedureRecordAuditService extends AuditService {
         archiveAE.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         archiveAE.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveAE.setAlternativeUserID(AuditLogger.processID());
-        String archiveAEHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveAEHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveAE.setNetworkAccessPointID(archiveAEHost);
         archiveAE.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveAEHost)
@@ -551,7 +551,7 @@ class ProcedureRecordAuditService extends AuditService {
         findSCP.setUserID(findSCPAE.getAETitle());
         findSCP.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         findSCP.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String findSCPHost = findSCPAE.getConnections().get(0).getHostname();;
+        String findSCPHost = AuditUtils.firstHostnameOf(findSCPAE.getConnections());;
         findSCP.setNetworkAccessPointID(findSCPHost);
         findSCP.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(findSCPHost)

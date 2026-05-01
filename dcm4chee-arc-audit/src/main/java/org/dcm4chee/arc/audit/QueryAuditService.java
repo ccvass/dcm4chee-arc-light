@@ -169,7 +169,7 @@ class QueryAuditService extends AuditService {
         archive.setUserIsRequestor(archiveUserIDTypeCode == AuditMessages.UserIDTypeCode.DeviceName);
         archive.setUserIDTypeCode(archiveUserIDTypeCode);
         archive.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String auditLoggerHostName = auditLogger.getConnections().get(0).getHostname();
+        String auditLoggerHostName = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archive.setNetworkAccessPointID(auditLoggerHostName);
         archive.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(auditLoggerHostName)

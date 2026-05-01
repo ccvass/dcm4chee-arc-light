@@ -42,6 +42,7 @@ package org.dcm4chee.arc.audit;
 import org.dcm4che3.audit.AuditMessages;
 import org.dcm4che3.hl7.HL7Message;
 import org.dcm4che3.hl7.HL7Segment;
+import org.dcm4che3.net.Connection;
 import org.dcm4che3.net.hl7.UnparsedHL7Message;
 import org.dcm4chee.arc.HL7ConnectionEvent;
 import org.dcm4chee.arc.delete.StudyDeleteContext;
@@ -62,6 +63,7 @@ import org.slf4j.LoggerFactory;
 
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Vrinda Nayak <vrinda.nayak@j4care.com>
@@ -438,6 +440,10 @@ class AuditUtils {
                 LOG.info("Unknown DICOM error code {}", errorCode);
         }
         return null;
+    }
+
+    static String firstHostnameOf(List<Connection> connections) {
+        return connections.isEmpty() ? "UNKNOWN" : connections.get(0).getHostname();
     }
 
 }

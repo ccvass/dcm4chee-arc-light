@@ -345,7 +345,7 @@ public class AuditService {
                                         .callingHost(req.getRemoteHost())
                                         .calledUserID(req.getRequestURI())
                                         .destUserID(rejectionNoteSent.getRemoteAE().getAETitle())
-                                        .destNapID(rejectionNoteSent.getRemoteAE().getConnections().get(0).getHostname())
+                                        .destNapID(AuditUtils.firstHostnameOf(rejectionNoteSent.getRemoteAE().getConnections()))
                                         .outcome(rejectionNoteSent.getErrorComment())
                                         .warning(codeItem.getString(Tag.CodeMeaning))
                                         .addAttrs(attrs, arcDev)

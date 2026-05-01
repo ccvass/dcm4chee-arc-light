@@ -360,7 +360,7 @@ class RetrieveAuditService extends AuditService {
         archiveAE.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         archiveAE.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveAE.setAlternativeUserID(AuditLogger.processID());
-        String archiveAEHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveAEHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveAE.setNetworkAccessPointID(archiveAEHost);
         archiveAE.setNetworkAccessPointTypeCode(AuditMessages.isIP(archiveAEHost)
                 ? AuditMessages.NetworkAccessPointTypeCode.IPAddress
@@ -494,7 +494,7 @@ class RetrieveAuditService extends AuditService {
         archiveURI.setAlternativeUserID(AuditLogger.processID());
         if (isSource)
             archiveURI.getRoleIDCode().add(eventType.source);   //The process that sent the data. - DICOM PS3.15
-        String archiveURIHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveURIHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveURI.setNetworkAccessPointID(archiveURIHost);
         archiveURI.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveURIHost)

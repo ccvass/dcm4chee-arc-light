@@ -211,7 +211,7 @@ class PDQAuditService extends AuditService {
         fhirPDQ.setUserID(fhirWebApp.getServiceURL().toString());
         fhirPDQ.setUserIDTypeCode(AuditMessages.UserIDTypeCode.URI);
         fhirPDQ.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        fhirPDQ.setNetworkAccessPointID(fhirWebApp.getConnections().get(0).getHostname());
+        fhirPDQ.setNetworkAccessPointID(AuditUtils.firstHostnameOf(fhirWebApp.getConnections()));
         fhirPDQ.getRoleIDCode().add(eventType.destination);
         return fhirPDQ;
     }
@@ -227,7 +227,7 @@ class PDQAuditService extends AuditService {
         archive.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archive.getRoleIDCode().add(eventType.source);
 
-        String auditLoggerHostName = auditLogger.getConnections().get(0).getHostname();
+        String auditLoggerHostName = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archive.setNetworkAccessPointID(auditLoggerHostName);
         archive.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(auditLoggerHostName)
@@ -263,7 +263,7 @@ class PDQAuditService extends AuditService {
         hl7PDQSupplier.setUserID(hl7ReceivingAppWithFacility);
         hl7PDQSupplier.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         hl7PDQSupplier.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        hl7PDQSupplier.setNetworkAccessPointID(hl7AppReceiver.getConnections().get(0).getHostname());
+        hl7PDQSupplier.setNetworkAccessPointID(AuditUtils.firstHostnameOf(hl7AppReceiver.getConnections()));
         hl7PDQSupplier.getRoleIDCode().add(eventType.destination);
         return hl7PDQSupplier;
     }
@@ -278,7 +278,7 @@ class PDQAuditService extends AuditService {
         hl7PDQConsumer.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         hl7PDQConsumer.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         hl7PDQConsumer.getRoleIDCode().add(eventType.source);
-        String senderHostName = sender.getConnections().get(0).getHostname();
+        String senderHostName = AuditUtils.firstHostnameOf(sender.getConnections());
         hl7PDQConsumer.setNetworkAccessPointID(senderHostName);
         hl7PDQConsumer.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(senderHostName)

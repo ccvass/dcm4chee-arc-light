@@ -95,7 +95,7 @@ class ApplicationActivityAuditService extends AuditService {
         archive.setAlternativeUserID(AuditLogger.processID());
         archive.getRoleIDCode().add(eventType.destination);
         
-        String auditLoggerHostName = auditLogger.getConnections().get(0).getHostname();
+        String auditLoggerHostName = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archive.setNetworkAccessPointID(auditLoggerHostName);
         archive.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(auditLoggerHostName)

@@ -434,7 +434,7 @@ class PatientRecordAuditService extends AuditService {
         hl7Application.setUserID(appFacility.equals("*") ? defVal : appFacility);
         hl7Application.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         hl7Application.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String hl7AppFacilityHost = hl7App.getConnections().get(0).getHostname();
+        String hl7AppFacilityHost = AuditUtils.firstHostnameOf(hl7App.getConnections());
         hl7Application.setNetworkAccessPointID(hl7AppFacilityHost);
         hl7Application.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(hl7AppFacilityHost)
@@ -449,7 +449,7 @@ class PatientRecordAuditService extends AuditService {
         hl7Application.setUserID(hl7App.getApplicationName());
         hl7Application.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         hl7Application.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String hl7AppFacilityHost = hl7App.getConnections().get(0).getHostname();
+        String hl7AppFacilityHost = AuditUtils.firstHostnameOf(hl7App.getConnections());
         hl7Application.setNetworkAccessPointID(hl7AppFacilityHost);
         hl7Application.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(hl7AppFacilityHost)
@@ -467,7 +467,7 @@ class PatientRecordAuditService extends AuditService {
         archiveRequestor.setUserIDTypeCode(AuditMessages.UserIDTypeCode.DeviceName);
         archiveRequestor.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveRequestor.setAlternativeUserID(AuditLogger.processID());
-        String archiveRequestorHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveRequestorHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveRequestor.setNetworkAccessPointID(archiveRequestorHost);
         archiveRequestor.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveRequestorHost)
@@ -511,7 +511,7 @@ class PatientRecordAuditService extends AuditService {
         archiveURI.setUserIDTypeCode(AuditMessages.UserIDTypeCode.URI);
         archiveURI.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveURI.setAlternativeUserID(AuditLogger.processID());
-        String archiveURIHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveURIHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveURI.setNetworkAccessPointID(archiveURIHost);
         archiveURI.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveURIHost)
@@ -544,7 +544,7 @@ class PatientRecordAuditService extends AuditService {
         archiveAE.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         archiveAE.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveAE.setAlternativeUserID(AuditLogger.processID());
-        String archiveAEHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveAEHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveAE.setNetworkAccessPointID(archiveAEHost);
         archiveAE.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveAEHost)
@@ -560,7 +560,7 @@ class PatientRecordAuditService extends AuditService {
         findSCP.setUserID(findSCPAE.getAETitle());
         findSCP.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         findSCP.setUserTypeCode(AuditMessages.UserTypeCode.Application);
-        String findSCPHost = findSCPAE.getConnections().get(0).getHostname();;
+        String findSCPHost = AuditUtils.firstHostnameOf(findSCPAE.getConnections());;
         findSCP.setNetworkAccessPointID(findSCPHost);
         findSCP.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(findSCPHost)
@@ -646,7 +646,7 @@ class PatientRecordAuditService extends AuditService {
     }
 
     private static String pdqDICOMHost(ApplicationEntity ae) {
-        return ae == null ? null : ae.getConnections().get(0).getHostname();
+        return ae == null ? null : AuditUtils.firstHostnameOf(ae.getConnections());
     }
 
     private static String pdqHL7ReceiverAppHost(URI pdqServiceURI, IHL7ApplicationCache hl7AppCache) {
@@ -657,11 +657,11 @@ class PatientRecordAuditService extends AuditService {
             return null;
         }
         HL7Application hl7Application = findHL7Application(appFacility[1].replace("/","|"), hl7AppCache);
-        return hl7Application == null ? null : hl7Application.getConnections().get(0).getHostname();
+        return hl7Application == null ? null : AuditUtils.firstHostnameOf(hl7Application.getConnections());
     }
 
     private static String pdqFHIRWebAppHost(WebApplication webApplication) {
-        return webApplication == null ? null : webApplication.getConnections().get(0).getHostname();
+        return webApplication == null ? null : AuditUtils.firstHostnameOf(webApplication.getConnections());
     }
 
 }

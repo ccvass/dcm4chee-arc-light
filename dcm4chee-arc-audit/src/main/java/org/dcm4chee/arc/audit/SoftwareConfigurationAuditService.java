@@ -108,7 +108,7 @@ class SoftwareConfigurationAuditService extends AuditService {
         archive.setAlternativeUserID(AuditLogger.processID());
         archive.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archive.setUserIsRequestor(archiveUserIDTypeCode == AuditMessages.UserIDTypeCode.DeviceName);
-        String auditLoggerHostName = auditLogger.getConnections().get(0).getHostname();
+        String auditLoggerHostName = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archive.setNetworkAccessPointID(auditLoggerHostName);
         archive.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(auditLoggerHostName)

@@ -129,7 +129,7 @@ class StorageCommitAuditService extends AuditService {
         Attributes eventInfo = ctx.getEventInfo();
         return new AuditInfoBuilder.Builder()
                 .callingUserID(remoteAE.getAETitle())
-                .callingHost(remoteAE.getConnections().get(0).getHostname())
+                .callingHost(AuditUtils.firstHostnameOf(remoteAE.getConnections()))
                 .calledUserID(ctx.getLocalAET())
                 .pIDAndName(eventInfo, arcDev)
                 .studyIUID(studyIUID(eventInfo, arcDev))
@@ -172,7 +172,7 @@ class StorageCommitAuditService extends AuditService {
         Attributes eventInfo = ctx.getEventInfo();
         return new AuditInfoBuilder.Builder()
                 .callingUserID(remoteAE.getAETitle())
-                .callingHost(remoteAE.getConnections().get(0).getHostname())
+                .callingHost(AuditUtils.firstHostnameOf(remoteAE.getConnections()))
                 .calledUserID(ctx.getLocalAET())
                 .pIDAndName(eventInfo, arcDev)
                 .studyIUID(studyIUID(eventInfo, arcDev))
@@ -330,7 +330,7 @@ class StorageCommitAuditService extends AuditService {
         archiveURI.setUserIDTypeCode(AuditMessages.UserIDTypeCode.URI);
         archiveURI.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveURI.setAlternativeUserID(AuditLogger.processID());
-        String archiveURIHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveURIHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveURI.setNetworkAccessPointID(archiveURIHost);
         archiveURI.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveURIHost)
@@ -360,7 +360,7 @@ class StorageCommitAuditService extends AuditService {
         archiveAE.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         archiveAE.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveAE.setAlternativeUserID(AuditLogger.processID());
-        String archiveAEHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveAEHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveAE.setNetworkAccessPointID(archiveAEHost);
         archiveAE.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveAEHost)
@@ -375,7 +375,7 @@ class StorageCommitAuditService extends AuditService {
         archiveRequestor.setUserIDTypeCode(AuditMessages.UserIDTypeCode.DeviceName);
         archiveRequestor.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveRequestor.setAlternativeUserID(AuditLogger.processID());
-        String archiveRequestorHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveRequestorHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveRequestor.setNetworkAccessPointID(archiveRequestorHost);
         archiveRequestor.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveRequestorHost)

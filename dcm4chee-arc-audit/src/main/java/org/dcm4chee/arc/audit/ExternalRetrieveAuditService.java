@@ -137,7 +137,7 @@ class ExternalRetrieveAuditService extends AuditService {
         archiveURI.setUserIDTypeCode(AuditMessages.UserIDTypeCode.URI);
         archiveURI.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveURI.setAlternativeUserID(AuditLogger.processID());
-        String archiveHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveURI.setNetworkAccessPointID(archiveHost);
         archiveURI.setNetworkAccessPointTypeCode(AuditMessages.isIP(archiveHost)
                 ? AuditMessages.NetworkAccessPointTypeCode.IPAddress
@@ -151,7 +151,7 @@ class ExternalRetrieveAuditService extends AuditService {
         requestorAE.setUserIDTypeCode(AuditMessages.UserIDTypeCode.StationAETitle);
         requestorAE.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         requestorAE.setAlternativeUserID(AuditLogger.processID());
-        String requestorHost = auditLogger.getConnections().get(0).getHostname();
+        String requestorHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         requestorAE.setNetworkAccessPointID(requestorHost);
         requestorAE.setNetworkAccessPointTypeCode(AuditMessages.isIP(requestorHost)
                 ? AuditMessages.NetworkAccessPointTypeCode.IPAddress
@@ -168,10 +168,7 @@ class ExternalRetrieveAuditService extends AuditService {
         moveOriginator.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         try {
             String moveOriginatorHost = auditInfo.getField(AuditInfo.CALLED_HOST) == null
-                    ? aeCache.findApplicationEntity(auditInfo.getField(AuditInfo.C_MOVE_ORIGINATOR))
-                        .getConnections()
-                        .get(0)
-                        .getHostname()
+                    ? AuditUtils.firstHostnameOf(aeCache.findApplicationEntity(auditInfo.getField(AuditInfo.C_MOVE_ORIGINATOR)).getConnections())
                     : auditInfo.getField(AuditInfo.CALLED_HOST);
             moveOriginator.setNetworkAccessPointID(moveOriginatorHost);
             moveOriginator.setNetworkAccessPointTypeCode(AuditMessages.isIP(moveOriginatorHost)

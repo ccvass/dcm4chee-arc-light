@@ -89,7 +89,7 @@ class ProvideAndRegisterAuditService extends AuditService {
         archiveRequestor.setAlternativeUserID(AuditLogger.processID());
         archiveRequestor.getRoleIDCode().add(eventType.source);
         archiveRequestor.setUserIsRequestor(true);
-        String archiveRequestorHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveRequestorHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveRequestor.setNetworkAccessPointID(archiveRequestorHost);
         archiveRequestor.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveRequestorHost)
@@ -106,7 +106,7 @@ class ProvideAndRegisterAuditService extends AuditService {
         archiveURI.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archiveURI.setAlternativeUserID(AuditLogger.processID());
         archiveURI.getRoleIDCode().add(eventType.source);
-        String archiveURIHost = auditLogger.getConnections().get(0).getHostname();
+        String archiveURIHost = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archiveURI.setNetworkAccessPointID(archiveURIHost);
         archiveURI.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(archiveURIHost)

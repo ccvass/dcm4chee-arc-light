@@ -154,7 +154,7 @@ class StudyRecordAuditService extends AuditService {
         archive.setUserIDTypeCode(AuditMessages.UserIDTypeCode.URI);
         archive.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archive.setAlternativeUserID(AuditLogger.processID());
-        String auditLoggerHostName = auditLogger.getConnections().get(0).getHostname();
+        String auditLoggerHostName = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archive.setNetworkAccessPointID(auditLoggerHostName);
         archive.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(auditLoggerHostName)
@@ -184,7 +184,7 @@ class StudyRecordAuditService extends AuditService {
         archive.setUserIDTypeCode(AuditMessages.UserIDTypeCode.ApplicationFacility);
         archive.setUserTypeCode(AuditMessages.UserTypeCode.Application);
         archive.setAlternativeUserID(AuditLogger.processID());
-        String auditLoggerHostName = auditLogger.getConnections().get(0).getHostname();
+        String auditLoggerHostName = AuditUtils.firstHostnameOf(auditLogger.getConnections());
         archive.setNetworkAccessPointID(auditLoggerHostName);
         archive.setNetworkAccessPointTypeCode(
                 AuditMessages.isIP(auditLoggerHostName)
