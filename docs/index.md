@@ -5,6 +5,7 @@
 - [SQL Scripts for SQL Server](#sql-scripts-for-sql-server)
 
 ## Database Schema for PostgreSQL
+- [Version 5.35.x](dbschema-5.35/index.html)
 - [Version 5.34.x](dbschema-5.34/index.html)
 - [Version 5.33.x](dbschema-5.33/index.html)
 - [Version 5.32.x](dbschema-5.32/index.html)
@@ -41,6 +42,7 @@
 - [create-fk-index.sql](https://raw.githubusercontent.com/wiki/dcm4che/dcm4chee-arc-light/psql/create-fk-index.sql)
 - [create-case-insensitive-index.sql](https://raw.githubusercontent.com/wiki/dcm4che/dcm4chee-arc-light/psql/create-case-insensitive-index.sql)
 - [drop-psql.sql](https://raw.githubusercontent.com/wiki/dcm4che/dcm4chee-arc-light/psql/drop-psql.sql)
+- [update-5.35-psql.sql](https://raw.githubusercontent.com/dcm4che/dcm4chee-arc-light/master/dcm4chee-arc-entity/src/main/resources/sql/psql/update-5.35-psql.sql)
 - [update-5.34-psql.sql](https://raw.githubusercontent.com/dcm4che/dcm4chee-arc-light/master/dcm4chee-arc-entity/src/main/resources/sql/update-5.34-psql.sql)
 - [update-5.33-psql.sql](https://raw.githubusercontent.com/dcm4che/dcm4chee-arc-light/master/dcm4chee-arc-entity/src/main/resources/sql/update-5.33-psql.sql)
 - [update-5.32-psql.sql](https://raw.githubusercontent.com/dcm4che/dcm4chee-arc-light/master/dcm4chee-arc-entity/src/main/resources/sql/update-5.32-psql.sql)
