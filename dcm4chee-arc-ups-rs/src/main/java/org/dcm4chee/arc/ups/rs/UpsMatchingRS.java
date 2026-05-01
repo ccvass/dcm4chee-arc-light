@@ -424,7 +424,10 @@ public class UpsMatchingRS {
             try {
                 return new SimpleDateFormat("yyyyMMddHHmmss").parse(upsScheduledTime);
             } catch (Exception e) {
-                LOG.info(e.getMessage());
+                throw new WebApplicationException(
+                    Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Invalid scheduledTime: " + upsScheduledTime)
+                        .build());
             }
         return new Date();
     }

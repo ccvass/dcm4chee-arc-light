@@ -355,7 +355,10 @@ public class StgVerCSVRS {
             try {
                 return new SimpleDateFormat("yyyyMMddHHmmss").parse(scheduledTime);
             } catch (Exception e) {
-                LOG.info(e.getMessage());
+                throw new WebApplicationException(
+                    Response.status(Response.Status.BAD_REQUEST)
+                        .entity("Invalid scheduledTime: " + scheduledTime)
+                        .build());
             }
 
         return new Date();
