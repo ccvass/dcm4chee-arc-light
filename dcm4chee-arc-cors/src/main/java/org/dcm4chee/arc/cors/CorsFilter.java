@@ -47,6 +47,10 @@ import jakarta.ws.rs.container.ContainerResponseFilter;
 import jakarta.ws.rs.ext.Provider;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Gunter Zeilinger <gunterze@gmail.com>
@@ -55,11 +59,32 @@ import java.io.IOException;
 @Provider
 public class CorsFilter implements ContainerResponseFilter {
 
+    private static final Set<String> ALLOWED_ORIGINS = parseAllowedOrigins();
+
+    private static Set<String> parseAllowedOrigins() {
+        String origins = getSystemPropertyOrEnv(
+                "Access-Control-Allow-Origin", "ACCESS_CONTROL_ALLOW_ORIGIN", "*");
+        if ("*".equals(origins))
+            return Collections.singleton("*");
+        return Arrays.stream(origins.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toSet());
+    }
+
     @Override
     public void filter(ContainerRequestContext requestContext,
                        ContainerResponseContext responseContext) throws IOException {
-        responseContext.getHeaders().add("Access-Control-Allow-Origin", "*");
-        responseContext.getHeaders().add("Access-Control-Allow-Credentials", "true");
+        String origin = requestContext.getHeaderString("Origin");
+        if (ALLOWED_ORIGINS.contains("*")) {
+            responseContext.getHeaders().add("Access-Control-Allow-Origin", "*");
+        } else if (origin != null && ALLOWED_ORIGINS.contains(origin)) {
+            responseContext.getHeaders().add("Access-Control-Allow-Origin", origin);
+            responseContext.getHeaders().add("Access-Control-Allow-Credentials", "true");
+            responseContext.getHeaders().add("Vary", "Origin");
+        } else {
+            return;
+        }
         responseContext.getHeaders().add("Access-Control-Allow-Headers",
                 getSystemPropertyOrEnv(
                         "Access-Control-Allow-Headers",
