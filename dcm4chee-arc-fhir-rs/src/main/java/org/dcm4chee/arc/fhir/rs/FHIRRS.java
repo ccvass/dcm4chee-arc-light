@@ -446,7 +446,7 @@ public class FHIRRS {
                     }
                 }
             } catch (IllegalArgumentException ignore) {
-            }
+            // invalid date value — skip this filter
         }
         if (start != null || end != null) {
             keys.setDateRange(Tag.PatientBirthDate, VR.PN, new DateRange(start, end));
@@ -496,6 +496,10 @@ public class FHIRRS {
                 .append('@')
                 .append(request.getRemoteHost());
         LOG.info(sb.toString());
+    }
+
+}
+oString());
     }
 
 }

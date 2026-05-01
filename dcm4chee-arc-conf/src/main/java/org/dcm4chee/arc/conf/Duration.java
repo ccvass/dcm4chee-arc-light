@@ -39,7 +39,7 @@ public class Duration {
                             + parseNumber(minuteMatch)) * 60
                             + parseNumber(secondMatch),
                             parseFraction(fractionMatch));
-                } catch (NumberFormatException ignore) {
+                } catch (NumberFormatException ignore) { // fall through to throw new IllegalArgumentException
                 }
         }
         throw new IllegalArgumentException(text);

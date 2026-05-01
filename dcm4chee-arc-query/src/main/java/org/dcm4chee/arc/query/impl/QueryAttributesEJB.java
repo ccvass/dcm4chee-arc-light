@@ -139,7 +139,9 @@ public class QueryAttributesEJB {
                     .setParameter(1, qrView.getViewID())
                     .setParameter(2, seriesPk)
                     .getSingleResult();
-        } catch (NoResultException e) {}
+        } catch (NoResultException e) {
+            // not cached — calculate below
+        }
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Tuple> q = cb.createTupleQuery();
         Root<Instance> instance = q.from(Instance.class);

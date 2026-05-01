@@ -59,7 +59,7 @@ public class MultipleStoreAssociations {
                 index = value.indexOf(':');
                 max = Integer.parseInt(value.substring(index + 1));
                 if (index != 0 && max > 0) return;
-            } catch (RuntimeException e) {}
+            } catch (NumberFormatException | StringIndexOutOfBoundsException e) { // narrowed from RuntimeException }
             throw new IllegalArgumentException(value);
     }
 

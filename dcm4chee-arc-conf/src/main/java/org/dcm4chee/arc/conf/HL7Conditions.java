@@ -103,7 +103,7 @@ public class HL7Conditions {
             if (ne ? (value != null && pattern.matcher(value).matches())
                       : (value == null || !pattern.matcher(value).matches()))
                 return false;
-        } catch (IllegalArgumentException ignore) {}
+        } catch (IllegalArgumentException ignore) { /* invalid HL7 field reference — treat as match */ }
         return true;
     }
 

@@ -409,7 +409,9 @@ public class HL7PSUEJB {
                     .setParameter(1, studyIUID)
                     .setParameter(2, seriesIUID)
                     .getSingleResult();
-        } catch (NoResultException e) {}
+        } catch (NoResultException e) {
+            // series not found — return null
+        }
         return null;
     }
 

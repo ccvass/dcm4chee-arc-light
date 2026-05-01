@@ -194,6 +194,7 @@ public class EMCECSStorage extends AbstractStorage {
         try {
             return s3.getObjectMetadata(container, storagePath) != null;
         } catch (S3Exception e) {
+            LOG.debug("Object not found at {}: {}", storagePath, e.getMessage());
         }
         return false;
     }

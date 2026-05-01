@@ -93,7 +93,7 @@ public enum BinaryPrefix {
                 return (s.indexOf('.') >= 0)
                         ? (long) (Double.parseDouble(val) * unitSize)
                         : Long.parseLong(val) * unitSize;
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) { // intentionally ignored: fall through to throw new IllegalArgumentException(s)
             }
         throw new IllegalArgumentException(s);
     }

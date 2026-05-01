@@ -96,6 +96,7 @@ public class ContentRange {
                         }
                     }
                 } catch (NumberFormatException e) {
+                    // invalid range value — return null
                 }
             }
         }

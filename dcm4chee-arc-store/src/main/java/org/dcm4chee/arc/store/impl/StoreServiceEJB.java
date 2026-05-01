@@ -1225,7 +1225,9 @@ public class StoreServiceEJB {
                         .setParameter(1, ctx.getStudyInstanceUID())
                         .getSingleResult();
                 addStorageIDsToStudy(ctx, study);
-            } catch (NoResultException e) {}
+            } catch (NoResultException e) {
+                // study not found — return null
+            }
         return study;
     }
 

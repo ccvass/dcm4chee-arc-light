@@ -206,7 +206,7 @@ public class Conditions {
                 case '§':
                     return ValuePredicate.valueOf(value.substring(1));
             }
-        } catch (IllegalArgumentException ignore) {
+        } catch (IllegalArgumentException ignore) { // fall through to Pattern.compile
         }
         return Pattern.compile(value);
     }

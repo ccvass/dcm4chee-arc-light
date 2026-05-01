@@ -116,6 +116,7 @@ public class CFindSCUAttributeCoercion implements AttributesCoercion {
             if (!matches.isEmpty())
                 newAttrs = matches.get(0);
         } catch (Exception e) {
+            LOG.warn("Leading C-FIND SCP {} query failed for study {}", leadingCFindSCP, studyIUID, e);
         }
         queryCache.put(key, newAttrs);
         return newAttrs;

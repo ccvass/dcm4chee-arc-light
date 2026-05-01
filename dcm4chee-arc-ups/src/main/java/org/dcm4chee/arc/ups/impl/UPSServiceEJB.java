@@ -709,7 +709,9 @@ public class UPSServiceEJB {
                 new Code(performedProcedure.getNestedDataset(Tag.PerformedStationNameCodeSequence));
                 new Code(performedProcedure.getNestedDataset(Tag.PerformedWorkitemCodeSequence));
                 return true;
-            } catch (Exception e) {}
+            } catch (IllegalArgumentException | NullPointerException e) {
+                // malformed UPS completion data — requirements not met
+            }
         }
         return false;
     }

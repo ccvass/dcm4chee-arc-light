@@ -342,7 +342,7 @@ public class Location {
             if (s != null)
                 try {
                     return Integer.valueOf(s);
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException e) { // non-numeric value — return null
                 }
             return null;
         }

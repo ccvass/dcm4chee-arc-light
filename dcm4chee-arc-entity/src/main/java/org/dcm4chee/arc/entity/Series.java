@@ -1253,7 +1253,7 @@ public class Series {
         if (val != null)
             try {
                 return Integer.valueOf(val);
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException e) { // non-numeric DICOM attribute value — return null
             }
         return null;
     }

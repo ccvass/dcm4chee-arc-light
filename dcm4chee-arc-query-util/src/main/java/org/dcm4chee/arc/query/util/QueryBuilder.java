@@ -1403,6 +1403,7 @@ public class QueryBuilder {
             try {
                 predicates.add(cb.equal(path, Integer.parseInt(value)));
             } catch (NumberFormatException e) {
+                // non-numeric value — skip predicate
             }
     }
 
