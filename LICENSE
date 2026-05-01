@@ -1,0 +1,25 @@
+dcm4chee-arc-light is triple-licensed under the following terms:
+
+  Mozilla Public License Version 1.1 (MPL 1.1)
+  GNU General Public License Version 2 or later (GPL 2.0+)
+  GNU Lesser General Public License Version 2.1 or later (LGPL 2.1+)
+
+You may use this software under the terms of any one of the above licenses.
+
+The Original Code is part of dcm4che, an implementation of DICOM(TM) in
+Java(TM), hosted at https://github.com/dcm4che.
+
+The Initial Developer of the Original Code is J4Care.
+Portions created by the Initial Developer are Copyright (C) 2013-2026
+the Initial Developer. All Rights Reserved.
+
+---
+
+MOZILLA PUBLIC LICENSE Version 1.1
+See: https://www.mozilla.org/en-US/MPL/1.1/
+
+GNU GENERAL PUBLIC LICENSE Version 2
+See: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+GNU LESSER GENERAL PUBLIC LICENSE Version 2.1
+See: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
