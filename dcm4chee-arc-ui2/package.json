@@ -45,7 +45,7 @@
     "express": "^5.1.0",
     "file-saver": "^2.0.2",
     "glyphicons-only-bootstrap": "^1.0.1",
-    "keycloak-js": "~25.0.6",
+    "keycloak-js": "~26.0.5",
     "lodash-es": "^4.17.17",
     "material-design-icons": "^3.0.1",
     "moment": "^2.30.1",
