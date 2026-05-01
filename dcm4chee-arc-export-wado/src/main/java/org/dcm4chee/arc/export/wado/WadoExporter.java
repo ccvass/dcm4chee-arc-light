@@ -113,8 +113,9 @@ public class WadoExporter extends AbstractExporter {
         String token = null;
         try {
             token = accessTokenRequestor.getAccessToken2(queryRetrieveWebApp).getToken();
-            LOG.debug("Access token retrieved for Web Application[name={}, {}] is {}",
-                    queryRetrieveWebApp.getApplicationName(), queryRetrieveWebApp.getKeycloakClient(), token);
+            LOG.debug("Access token retrieved for Web Application[name={}, {}] - length: {}",
+                    queryRetrieveWebApp.getApplicationName(), queryRetrieveWebApp.getKeycloakClient(),
+                    token != null ? token.length() : 0);
         } catch (Exception e) {
             LOG.info("Failed to get access token for Web Application[name={}, KeycloakClientID={}] \n",
                     queryRetrieveWebApp.getApplicationName(), queryRetrieveWebApp.getKeycloakClient(), e);
