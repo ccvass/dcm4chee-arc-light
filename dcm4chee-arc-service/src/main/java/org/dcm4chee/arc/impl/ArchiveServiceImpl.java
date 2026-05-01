@@ -208,7 +208,8 @@ public class ArchiveServiceImpl implements ArchiveService {
     private static Attributes BlobCorruptedHandler(byte[] bytes, Attributes result, IOException e) {
         LOG.warn("Failed to decode Attributes BLOB:\n", e);
         Path dir = Paths.get(System.getProperty("jboss.server.log.dir"),
-                new SimpleDateFormat("'corrupted-blobs'-YYYY-MM-dd").format(new Date()));
+                java.time.LocalDate.now().format(
+                        java.time.format.DateTimeFormatter.ofPattern("'corrupted-blobs'-yyyy-MM-dd")));
         try {
             Files.createDirectories(dir);
             Path file = Files.createTempFile(dir, "blob-", ".bin");
@@ -242,7 +243,20 @@ public class ArchiveServiceImpl implements ArchiveService {
         for (Scheduler scheduler : schedulers) scheduler.start();
         device.bindConnections();
         status = Status.STARTED;
+        warnIfSecurityDisabled();
         archiveServiceEvent.fire(new ArchiveServiceEvent(ArchiveServiceEvent.Type.STARTED, request));
+    }
+
+    private void warnIfSecurityDisabled() {
+        String secureFlag = System.getProperty("secure");
+        if (secureFlag == null || secureFlag.isEmpty()) {
+            LOG.warn("========================================================");
+            LOG.warn("  SECURITY IS DISABLED — no authentication configured!");
+            LOG.warn("  REST endpoints and UI are accessible without login.");
+            LOG.warn("  NOT SUITABLE FOR PRODUCTION.");
+            LOG.warn("  Build with -Dsecure=ui or -Dsecure=all to enable.");
+            LOG.warn("========================================================");
+        }
     }
 
     @Override
