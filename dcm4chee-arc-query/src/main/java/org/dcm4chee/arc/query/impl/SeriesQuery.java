@@ -379,7 +379,7 @@ class SeriesQuery extends AbstractQuery {
 
     @Override
     public boolean isOptionalKeysNotSupported() {
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement optional keys detection — currently always reports all keys supported
         return false;
     }
 }

@@ -250,7 +250,7 @@ abstract class ForwardRetrieveTask implements RetrieveTask {
 
         @Override
         public void onCancelRQ(Association rqas) {
-            //TODO
+            // TODO(ccvass/dcm4chee-arc-light#10): implement C-CANCEL forwarding to downstream SCP
         }
 
         @Override

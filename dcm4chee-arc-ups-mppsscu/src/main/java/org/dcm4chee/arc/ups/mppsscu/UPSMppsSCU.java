@@ -69,7 +69,7 @@ public class UPSMppsSCU extends AbstractUPSProcessor {
     @Override
     protected void processA(UPSContext upsCtx, Attributes ups) throws Exception {
         String destinationAE = destinationAEOf(ups);
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement MPPS N-CREATE/N-SET forwarding to destination AE
     }
 
     private String destinationAEOf(Attributes ups) {

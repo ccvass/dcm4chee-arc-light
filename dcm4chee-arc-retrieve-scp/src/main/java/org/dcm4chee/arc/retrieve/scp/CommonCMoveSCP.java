@@ -136,7 +136,7 @@ class CommonCMoveSCP extends BasicCMoveSCP {
             boolean retryFailedRetrieve = fallbackCMoveSCP != null
                     && fallbackCMoveSCPDestination != null
                     && retryFailedRetrieve(ctx, qrLevel);
-            Collection<InstanceLocations> notRetrieveable = notAccessable.remove(null); //TODO
+            Collection<InstanceLocations> notRetrieveable = notAccessable.remove(null); // TODO(ccvass/dcm4chee-arc-light#10): handle non-retrievable instances — report failure to requesting SCU
             Iterator<Map.Entry<String, Collection<InstanceLocations>>> notAccessableIter = notAccessable.entrySet().iterator();
             if (notAccessableIter.hasNext()) {
                 Map.Entry<String, Collection<InstanceLocations>> notAccessableNext = notAccessableIter.next();

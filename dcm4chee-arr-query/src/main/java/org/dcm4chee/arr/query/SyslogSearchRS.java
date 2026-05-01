@@ -125,7 +125,7 @@ public class SyslogSearchRS {
     private Response queryElasticSearch(String esURL) {
         Client client = ClientBuilder.newBuilder().build();
         WebTarget target = client.target(esURL);
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement ElasticSearch syslog query integration
         // target = target.path(index);
         // target = target.path("_search");
         // target = target.queryParam(name1, values1);
@@ -136,7 +136,7 @@ public class SyslogSearchRS {
     private void writeTo(Response response, OutputStream out) {
         JsonGenerator gen = Json.createGenerator(out);
         gen.writeStartArray();
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement ElasticSearch syslog query integration
         gen.writeEnd();
         gen.flush();
     }

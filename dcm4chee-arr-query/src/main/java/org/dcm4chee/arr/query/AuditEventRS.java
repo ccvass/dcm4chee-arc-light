@@ -154,7 +154,7 @@ public class AuditEventRS {
     private Response queryElasticSearch(String esURL) {
         Client client = ClientBuilder.newBuilder().build();
         WebTarget target = client.target(esURL);
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement ElasticSearch audit query integration
         // target = target.path(index);
         // target = target.path("_search");
         // target = target.queryParam(name, values);
@@ -193,13 +193,13 @@ public class AuditEventRS {
     private void writeXMLTo(Response response, OutputStream out) {
         ArchiveDeviceExtension arcDev = device.getDeviceExtension(ArchiveDeviceExtension.class);
         String tpluri = arcDev.getAudit2XmlFhirTemplateURI();
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement ElasticSearch audit query integration
     }
 
     private void writeJSONTo(Response response, OutputStream out) {
         ArchiveDeviceExtension arcDev = device.getDeviceExtension(ArchiveDeviceExtension.class);
         String tpluri = arcDev.getAudit2JsonFhirTemplateURI();
-        //TODO
+        // TODO(ccvass/dcm4chee-arc-light#10): implement ElasticSearch audit query integration
     }
 
     private static void transform(String auditMessage, String tpluri, OutputStream out) throws TransformerException {
