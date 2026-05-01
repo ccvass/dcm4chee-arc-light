@@ -228,7 +228,7 @@ public class ExporterRS {
     private Date scheduledTime() {
         if (scheduledTime != null)
             try {
-                return new SimpleDateFormat("yyyyMMddhhmmss").parse(scheduledTime);
+                return new SimpleDateFormat("yyyyMMddHHmmss").parse(scheduledTime);
             } catch (Exception e) {
                 LOG.info(e.getMessage());
             }

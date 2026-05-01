@@ -323,7 +323,7 @@ public class UpsRS {
     private Date scheduledTime(String upsScheduledTime) {
         if (upsScheduledTime != null)
             try {
-                return new SimpleDateFormat("yyyyMMddhhmmss").parse(upsScheduledTime);
+                return new SimpleDateFormat("yyyyMMddHHmmss").parse(upsScheduledTime);
             } catch (Exception e) {
                 LOG.info("Can not parse upsScheduledTime[={}]: {}", upsScheduledTime, e.getMessage());
             }

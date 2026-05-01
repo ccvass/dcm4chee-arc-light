@@ -393,7 +393,7 @@ public class UpsDimseRS {
     private Date scheduledTime() {
         if (upsScheduledTime != null)
             try {
-                return new SimpleDateFormat("yyyyMMddhhmmss").parse(upsScheduledTime);
+                return new SimpleDateFormat("yyyyMMddHHmmss").parse(upsScheduledTime);
             } catch (Exception e) {
                 LOG.info(e.getMessage());
             }
