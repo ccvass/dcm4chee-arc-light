@@ -8,3 +8,19 @@ node/
 node_modules/
 bower_components/
 .vscode/
+
+# Infrastructure (NEVER track per AGENTS.md)
+REMOTE.md
+
+# AI agents & copilot
+AGENTS.md
+.kiro/
+.cursor/
+.claude/
+.copilot/
+todo.json
+.f.json
+
+# Debug
+debug/
+reference/
